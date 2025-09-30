@@ -1,5 +1,13 @@
 # BenchBase
 
+## Running microbenchmarks (kfranz 9/23/25)
+
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.12.0.7-2.el8.x86_64; export PATH="$JAVA_HOME/bin:$PATH"; echo "Using JAVA_HOME=$JAVA_HOME";
+
+cd ~/code/benchbase && ./mvnw clean package -P yugabyte -DskipTests && cd target && tar xvzf benchbase-yugabyte.tgz && cd benchbase-yugabyte && java -jar benchbase.jar -b featurebench -c config/yugabyte/yb/single_row_insert_users.yaml --create=true --load=true --execute=true -p endpoint=172.151.31.13,172.151.18.85,172.151.18.113 -p username=yugabyte -p database=yugabyte -p password=''
+```
+
 [![BenchBase (Java with Maven)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/cmu-db/benchbase/actions/workflows/maven.yml)
 
 BenchBase (formerly [OLTPBench](https://github.com/oltpbenchmark/oltpbench/)) is a Multi-DBMS SQL Benchmarking Framework via JDBC.
