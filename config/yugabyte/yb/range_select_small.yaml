@@ -106,6 +106,6 @@ microbenchmark:
                             ORDER BY id
                           count: 100
                           bindings:
-                              - util: PrimaryIntGen
+                              - util: PrimaryIntRandomForExecutePhase
                                 params: [ 1, 999901 ]
 
